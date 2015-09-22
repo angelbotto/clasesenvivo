@@ -1,0 +1,9 @@
+---
+:orm: mongoid
+:test: rspec
+:mock: mocha
+:script: none
+:renderer: slim
+:stylesheet: none
+:namespace: Clasesenvivo
+:migration_format: number
