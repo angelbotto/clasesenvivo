@@ -19,6 +19,7 @@ class User
   validates_format_of :email,
                   with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
+  # #TODO:0 refactor this methid
   def self.login(email, password)
     user = User.where(email: email, status: true).first
     if user
@@ -32,6 +33,7 @@ class User
     end
   end
 
+  # #FIXME:0 refactor this methid
   def self.generate_new_token(id)
     user = User.find(id)
     if user
