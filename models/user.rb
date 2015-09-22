@@ -14,10 +14,17 @@ class User
 
   before_save :encrypt_password
 
+  has_many :videos
+
   validates_presence_of :name, :email, :password, :token, :about
   validates_uniqueness_of :email
   validates_format_of :email,
                   with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
+  def self.validate_token(token)
+    user = User.where(token: token).first
+    user ? user : false
+  end
 
   # #TODO:0 refactor this methid
   def self.login(email, password)
